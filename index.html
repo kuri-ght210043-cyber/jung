@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말랑말랑 학교생활</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Jua&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-pink: #ffe6ea;
+            --main-pink: #ff8fab;
+            --pop-blue: #a2d2ff;
+            --pop-yellow: #fdfd96;
+            --pop-mint: #caffbf;
+            --text-dark: #5c4b51;
+        }
+
+        body {
+            background-color: var(--bg-pink);
+            background-image:
+                radial-gradient(#ffc6d9 15%, transparent 16%),
+                radial-gradient(#ffc6d9 15%, transparent 16%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            font-family: 'Gaegu', cursive;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* 둥실둥실 구름 배경 애니메이션 */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            z-index: -1;
+            opacity: 0.8;
+            animation: floatCloud 20s linear infinite;
+        }
+
+        .c1 {
+            width: 120px;
+            height: 60px;
+            top: 10%;
+            left: -150px;
+            animation-duration: 25s;
+        }
+
+        .c2 {
+            width: 180px;
+            height: 90px;
+            top: 30%;
+            left: -200px;
+            animation-delay: 5s;
+            animation-duration: 28s;
+        }
+
+        .c3 {
+            width: 100px;
+            height: 50px;
+            top: 70%;
+            left: -120px;
+            animation-delay: 10s;
+            animation-duration: 22s;
+        }
+
+        @keyframes floatCloud {
+            0% {
+                transform: translateX(-200px);
+            }
+
+            100% {
+                transform: translateX(120vh);
+            }
+
+            /* 화면 가로지르기 */
+            /* 100vw 대신 여유있게 */
+        }
+
+        header {
+            margin-top: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Jua', sans-serif;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 4px 4px 0 var(--main-pink), 8px 8px 0 rgba(0, 0, 0, 0.1);
+            margin: 0;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            background: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+            box-shadow: 4px 4px 0 #ffbdce;
+            transform: rotate(-2deg);
+        }
+
+        /* 메뉴 그리드 */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            width: 90%;
+            margin: 50px auto;
+            z-index: 10;
+        }
+
+        .menu-item {
+            display: block;
+            text-decoration: none;
+            background: white;
+            padding: 30px;
+            border-radius: 40px;
+            border: 8px solid #fff;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 1.5, 0.5, 1);
+            text-align: center;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* 각 카드별 테마 */
+        .item-1 {
+            box-shadow: 10px 10px 0 #a2d2ff;
+        }
+
+        .item-2 {
+            box-shadow: 10px 10px 0 #ffdac1;
+        }
+
+        .item-3 {
+            box-shadow: 10px 10px 0 #bdb2ff;
+        }
+
+        .item-4 {
+            box-shadow: 10px 10px 0 #ff9aa2;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px) scale(1.03) rotate(2deg);
+        }
+
+        .item-1:hover {
+            border-color: #a2d2ff;
+            background: #eafafe;
+        }
+
+        .item-2:hover {
+            border-color: #ffdac1;
+            background: #fff5eb;
+        }
+
+        .item-3:hover {
+            border-color: #bdb2ff;
+            background: #f2f0ff;
+        }
+
+        .item-4:hover {
+            border-color: #ff9aa2;
+            background: #fff0f1;
+        }
+
+        .icon-area {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover .icon-area {
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0 0;
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        /* 스티커 효과 장식 */
+        .sticker {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .s1 {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            transform: rotate(-15deg);
+        }
+
+        .s2 {
+            top: 20%;
+            right: 10%;
+            animation-delay: 1s;
+            transform: rotate(10deg);
+        }
+
+        .s3 {
+            bottom: 10%;
+            left: 15%;
+            animation-delay: 0.5s;
+            font-size: 2.5rem;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            font-size: 1.5rem;
+            color: #888;
+            text-align: center;
+        }
+
+        .footer-heart {
+            color: #ff8fab;
+            animation: beat 1s infinite;
+            display: inline-block;
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+
+    <div class="sticker s1">🐾</div>
+    <div class="sticker s2">⭐</div>
+    <div class="sticker s3">🌱</div>
+
+    <header>
+        <h1>� 우리 반 놀이터</h1>
+        <div class="subtitle">오늘도 행복하게 공부해요!</div>
+    </header>
+
+    <div class="menu-grid">
+        <a href="attention.html" class="menu-item item-1">
+            <div class="icon-area">🎮</div>
+            <h2>집중 캡슐</h2>
+            <p>두근두근 캡슐 뽑기!</p>
+        </a>
+
+        <a href="modum.html" class="menu-item item-2">
+            <div class="icon-area">🧩</div>
+            <h2>모둠 짜기</h2>
+            <p>누구랑 짝이 될까?</p>
+        </a>
+
+        <a href="pick.html" class="menu-item item-3">
+            <div class="icon-area">🎤</div>
+            <h2>발표 왕</h2>
+            <p>오늘의 주인공은!</p>
+        </a>
+
+        <a href="timer.html" class="menu-item item-4">
+            <div class="icon-area">⏰</div>
+            <h2>타이머</h2>
+            <p>시간을 잘 지켜요</p>
+        </a>
+    </div>
+
+    <footer>
+        선생님과 친구들이 함께 만드는 즐거운 교실 <span class="footer-heart">♥</span>
+    </footer>
+
+</body>
+
+</html>
